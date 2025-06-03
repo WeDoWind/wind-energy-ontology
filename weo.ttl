@@ -1,0 +1,125 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix oeo: <http://openenergy-platform.org/ontology/oeo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix weo: <https://w3id.org/ontoforge/weo#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+<https://w3id.org/ontoforge/weo#> rdf:type owl:Ontology ;
+                                   owl:imports <http://purl.obolibrary.org/obo/bfo/2019-08-26/bfo.owl> ;
+                                   dc:creator <https://orcid.org/0000-0002-6570-6966> ;
+                                   dc:title "Wind Energy Ontology"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+skos:closeMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#exactMatch
+skos:exactMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf rdfs:label .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://openenergy-platform.org/ontology/oeo/OEO_00000143
+oeo:OEO_00000143 rdf:type owl:Class ;
+                 rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000027> ;
+                 <http://purl.obolibrary.org/obo/IAO_0000115> "An electricity grid is a supply grid that distributes electrical energy / electricity."@en ;
+                 skos:prefLabel "Stromnetz"@de ,
+                                "electricity grid"@en .
+
+
+###  https://w3id.org/ontoforge/weo#BalanceOfPlant
+weo:BalanceOfPlant rdf:type owl:Class ;
+                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000027> ;
+                   skos:prefLabel "balance of plant" .
+
+
+###  https://w3id.org/ontoforge/weo#ManufacturedObject
+weo:ManufacturedObject rdf:type owl:Class ;
+                       rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000030> ;
+                       skos:closeMatch oeo:OEO_00000061 ;
+                       skos:prefLabel "manufactured object" .
+
+
+###  https://w3id.org/ontoforge/weo#MeasurementStation
+weo:MeasurementStation rdf:type owl:Class ;
+                       rdfs:subClassOf weo:ManufacturedObject ;
+                       skos:prefLabel "measurement station"@en .
+
+
+###  https://w3id.org/ontoforge/weo#MeasurmentTower
+weo:MeasurmentTower rdf:type owl:Class ;
+                    rdfs:subClassOf weo:MeasurementStation ;
+                    skos:prefLabel "measurement tower"@en .
+
+
+###  https://w3id.org/ontoforge/weo#MonitoringSensor
+weo:MonitoringSensor rdf:type owl:Class ;
+                     rdfs:subClassOf weo:ManufacturedObject ;
+                     skos:closeMatch oeo:OEO_00010259 ,
+                                     <http://www.w3.org/ns/sosa/Sensor> ;
+                     skos:prefLabel "monitoring sensor"@en .
+
+
+###  https://w3id.org/ontoforge/weo#WindEnergyProjectPhase
+weo:WindEnergyProjectPhase rdf:type owl:Class ;
+                           rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000038> ;
+                           skos:exactMatch <https://w3id.org/ontoforge/windprofile#WindEnergyProjectLife-cyclePhase> ;
+                           skos:prefLabel "wind energy project phase"@en .
+
+
+###  https://w3id.org/ontoforge/weo#WindEnergySite
+weo:WindEnergySite rdf:type owl:Class ;
+                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000029> ;
+                   skos:prefLabel "wind energy site" .
+
+
+###  https://w3id.org/ontoforge/weo#WindFarm
+weo:WindFarm rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000027> ;
+             skos:closeMatch oeo:OEO_00000447 ;
+             skos:prefLabel "wind farm" .
+
+
+###  https://w3id.org/ontoforge/weo#WindTurbine
+weo:WindTurbine rdf:type owl:Class ;
+                rdfs:subClassOf weo:ManufacturedObject ;
+                skos:exactMatch oeo:OEO_00000044 ;
+                skos:prefLabel "wind turbine"@en .
+
+
+###  https://w3id.org/ontoforge/weo#WindTurbinePart
+weo:WindTurbinePart rdf:type owl:Class ;
+                    rdfs:subClassOf weo:ManufacturedObject ;
+                    skos:prefLabel "wind turbine part"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
